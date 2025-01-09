@@ -8,12 +8,21 @@ enum RolesEnum: string
     case User = 'user';
     case commenter = 'commenter';
 
-    public function labels(): array
+    public static function labels(): array
     {
         return [
             self::Admin->value => 'Admin',
             self::User->value => 'User',
             self::commenter->value => 'Commenter',
         ];
+    }
+
+    public function label(): string
+    {
+        return match ($this) {
+            self::Admin => 'Admin',
+            self::User => 'User',
+            self::commenter => 'Commenter',
+        };
     }
 }
